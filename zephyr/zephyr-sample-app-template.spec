@@ -3,6 +3,7 @@
 
 %define targetname      _TO_COMPLETE_
 %define targettoolchain _TO_COMPLETE_
+%define sample_path     samples/_TO_COMPLETE_
 %define firmwarename    _TO_COMPLETE_
 %define filename        zephyr-%{firmwarename}-%{targetname}
 
@@ -25,7 +26,7 @@ BuildRequires: zephyr-kernel-hal
 _TO_COMPLETE_
 
 %prep
-cp -a %{_zephyrkerneldir}/_TO_COMPLETE_/. .
+cp -a %{_zephyrkerneldir}/%{sample_path}/. .
 
 %build
 %{westbuild} -b %{targetname} .
