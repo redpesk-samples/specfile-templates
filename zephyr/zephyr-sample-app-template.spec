@@ -3,6 +3,7 @@
 
 %define targetname      _TO_COMPLETE_
 %define targettoolchain _TO_COMPLETE_
+%define sample_path     samples/_TO_COMPLETE_
 %define firmwarename    _TO_COMPLETE_
 %define filename        zephyr-%{firmwarename}-%{targetname}
 
@@ -16,14 +17,16 @@ URL: _TO_COMPLETE_
 
 # Required Zephyr packages
 BuildRequires: zephyr-kernel
-BuildRequires: zephyr-kernel-modules-common
 BuildRequires: zephyr-toolchain-%{targettoolchain}
+%if "%{targetname}" != "qemu_x86_64"
+BuildRequires: zephyr-kernel-hal
+%endif
 
 %description
 _TO_COMPLETE_
 
 %prep
-cp -a %{_zephyrkerneldir}/_TO_COMPLETE_/. .
+cp -a %{_zephyrkerneldir}/%{sample_path}/. .
 
 %build
 %{westbuild} -b %{targetname} .
